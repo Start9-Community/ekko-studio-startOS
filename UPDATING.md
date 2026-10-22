@@ -13,10 +13,7 @@ manifest list before choosing a version.
 5. Refresh `LICENSE` and `icon.svg` from upstream if they changed.
 6. Run the package checks/builds and test initial password setup, old-password
    rejection, rotation, persistence, interfaces, and backup/restore on StartOS.
-7. Review limitations in README and instructions. Uploading a build or creating
-   a GitHub Release does not publish it to a Start9 registry.
+7. Review limitations in README and instructions. Merging to `main` tags the
+   version and publishes it to the community-beta registry.
 
-The initial pin is upstream `v0.7.36`, source commit
-`1242ac63556491c92ba6dd49d89fd19c91a6bdd5`, image index digest
-`sha256:06a3c3fc30c850f3f68c9c144afedee9c575ece848e55857e97915fd358c91f4`.
 The icon is upstream `packages/tos/icon.svg`; the license is upstream `LICENSE`.

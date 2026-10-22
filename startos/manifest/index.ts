@@ -5,7 +5,7 @@ export const manifest = setupManifest({
   id: 'ekko-studio',
   title: 'Ekko Studio',
   license: 'BUSL-1.1',
-  packageRepo: 'https://github.com/EKKOLearnAI/ekko-studio-startOS',
+  packageRepo: 'https://github.com/Start9-Community/ekko-studio-startOS',
   upstreamRepo: 'https://github.com/EKKOLearnAI/ekko-studio',
   marketingUrl: 'https://ekkostudio.xyz',
   donationUrl: null,
@@ -15,7 +15,7 @@ export const manifest = setupManifest({
     studio: {
       source: {
         dockerTag:
-          'ekkoye8888/hermes-web-ui:v0.7.36@sha256:06a3c3fc30c850f3f68c9c144afedee9c575ece848e55857e97915fd358c91f4',
+          'ekkoye8888/hermes-web-ui:v0.7.38@sha256:23f72dc4900534b2eb6d0511f5b81d3cf620f5dce69cf132b32317e88d4a4f01',
       },
       arch: ['x86_64', 'aarch64'],
     },
