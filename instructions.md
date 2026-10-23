@@ -2,29 +2,26 @@
 
 ## Documentation
 
-- [Ekko Studio user guide](https://github.com/EKKOLearnAI/ekko-studio/blob/main/README.md) — model configuration, agents, and application features.
+- [Ekko Studio README](https://github.com/EKKOLearnAI/ekko-studio/blob/main/README.md) — model configuration, agents, and application features.
+
+## What you get on StartOS
+
+A single **Web Interface** serving Ekko Studio's browser app. Your conversations, uploaded files, agent settings, installed coding tools, and the files in the default workspace all live in this service's data and are included in its backups.
 
 ## Getting set up
 
-1. Complete **Set Admin Password** and save the generated password.
+1. Run **Set Admin Password** and save the password it shows you.
 2. Start Ekko Studio and open **Web Interface**.
-3. Sign in as `admin` with the generated password.
-4. Add your preferred model provider in Studio and configure an agent before starting a chat.
+3. Sign in as `admin` with that password.
+4. Add a model provider in Studio and configure an agent before starting a chat. Providers may require their own accounts and fees; none are included.
 
-Your conversations, uploaded files, agent settings, and files created in the
-default workspace remain in this instance. Use the default workspace for files
-you want the package to preserve.
+## Using Ekko Studio
 
-## Administrator access
+### Actions
 
-If you lose the password, stop the service and run **Set Admin Password** again.
-This replaces the password; it does not display the old one. Keep the managed
-account named `admin`. Create additional accounts inside Studio when needed.
+- **Set Admin Password** — generates a new password for the `admin` account and shows it once. Run it again if you lose the password; it is available while the service is stopped. Keep the account named `admin`, and create additional accounts inside Studio.
 
-## Supported connections
+## Limitations
 
-Use **Web Interface** for the browser, API, and live chat. Direct LAN discovery,
-UDP peer connections, preview development servers, and separate OAuth callback
-listeners are not exposed by this package. Configure provider API credentials
-when a provider's callback-based sign-in is unavailable. Model providers may
-require their own accounts and fees; none are included with the package.
+- LAN device discovery and direct peer-to-peer connections are turned off, and providers whose browser sign-in needs a separate callback listener (such as xAI) can't use it. Use the provider's API key instead.
+- Studio's own update check is turned off; updates arrive as service updates.

@@ -13,6 +13,8 @@ A StartOS wrapper for [Ekko Studio](https://github.com/EKKOLearnAI/ekko-studio),
 a self-hosted workspace for AI agents, chat, coding, and visual workflows.
 This repository retains upstream branding and its Business Source License.
 
+---
+
 ## Table of Contents
 
 - [Image and Container Runtime](#image-and-container-runtime)
@@ -28,6 +30,8 @@ This repository retains upstream branding and its Business Source License.
 - [Limitations and Differences](#limitations-and-differences)
 - [Quick Reference for AI Consumers](#quick-reference-for-ai-consumers)
 
+---
+
 ## Image and Container Runtime
 
 The package wraps the unmodified upstream `ekkoye8888/hermes-web-ui` image,
@@ -42,10 +46,10 @@ subcontainer exists only while applying administrator credentials.
 The complete application home is persistent. File work outside this home is
 outside the package's persistence contract.
 
-| Volume | Container path | Contents |
-| --- | --- | --- |
-| `main` | `/home/agent` | Studio database, credentials, uploads, Hermes profiles, runtime-installed tools, workspaces, caches |
-| `startos` | Not mounted into application containers | Package-managed administrator credential in `store.json` |
+| Volume    | Container path                          | Contents                                                                                            |
+| --------- | --------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `main`    | `/home/agent`                           | Studio database, credentials, uploads, Hermes profiles, runtime-installed tools, workspaces, caches |
+| `startos` | Not mounted into application containers | Package-managed administrator credential in `store.json`                                            |
 
 Studio data is under `.hermes-web-ui/`, Hermes data under `.hermes/`, and the
 workspace browser is rooted at `workspaces/`, all inside the mounted home.
@@ -124,18 +128,14 @@ model-provider data, or files outside the mounted home are backed up.
 
 ## Limitations and Differences
 
-This is an initial packaging submission. **It has not been installed on a StartOS
-device.** Container smoke tests and package builds do not verify StartOS runtime
-confinement, interface routing, actions/tasks, backup/restore, or uninstall.
-Those remain required before a production listing is claimed.
+The package exposes the browser service only, and leaves upstream's self-update to package releases.
 
-The package exposes the main browser service only. Direct LAN device discovery,
-UDP P2P, preview development servers, OAuth providers needing a separate callback
-listener, arbitrary development ports, and host-device integrations are outside
-this package's supported interface set. Use provider API credentials where
-appropriate. Updating the application image is managed through package releases;
-upstream update notifications are disabled. Running agents can execute code
-inside this service's container and mounted application home.
+1. The UDP LAN discovery responder and direct UDP peer-to-peer connections are disabled (`HERMES_LAN_DISCOVERY_ENABLED=false`, `STUDIO_P2P_ENABLED=0`), and the UDP port range is not exposed.
+2. The preview development server, arbitrary development ports, and the separate OAuth callback listener (used by xAI sign-in) are not exposed. Use a provider API key where a provider's browser sign-in needs that listener.
+3. Upstream's in-app update check is disabled; updates arrive as package releases.
+4. Agents execute code inside this service's container with access to its whole home volume.
+
+---
 
 ## Quick Reference for AI Consumers
 

@@ -27,8 +27,7 @@ export const dataMounts = () =>
     readonly: false,
   })
 
-// Uses upstream's reset CLI and authenticated password API, not an invented hash.
-// The action is only available while stopped. Its temporary server binds loopback.
+// Briefly restores upstream's default login, so it must never run beside the public daemon.
 export const passwordBootstrap = String.raw`
 import { spawn, execFileSync } from 'node:child_process';
 import { mkdirSync } from 'node:fs';
